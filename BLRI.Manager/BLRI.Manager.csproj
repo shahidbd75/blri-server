@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BLRI.Common\BLRI.Common.csproj" />
+    <ProjectReference Include="..\BLRI.DAL\BLRI.DAL.csproj" />
+    <ProjectReference Include="..\BLRI.ViewModel\BLRI.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>
