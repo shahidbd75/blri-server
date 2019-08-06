@@ -14,14 +14,12 @@ namespace BLRI.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<User> userManager;
-        private SignInManager<User> signInManager;
-        private ITokenProvider tokenProvider;
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, ITokenProvider tokenProvider)
+        private readonly UserManager<User> _userManager;
+        private readonly ITokenProvider _tokenProvider;
+        public AccountController(UserManager<User> userManager, ITokenProvider tokenProvider)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            this.tokenProvider = tokenProvider;
+            this._userManager = userManager;
+            this._tokenProvider = tokenProvider;
         }
 
         [HttpPost("login")]
@@ -32,16 +30,16 @@ namespace BLRI.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = await userManager.FindByNameAsync(loginViewModel.UserName);
+            var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
             if (user == null)
             {
                 return BadRequest("invalid user");
             }
 
-            var userResult = await userManager.CheckPasswordAsync(user, loginViewModel.Password);
+            var userResult = await _userManager.CheckPasswordAsync(user, loginViewModel.Password);
             if (userResult)
             {
-                return Ok(tokenProvider.GenerateToken(user));
+                return Ok(new { token = _tokenProvider.GenerateToken(user)});
             }
 
             return NotFound("invalid password");
@@ -58,7 +56,7 @@ namespace BLRI.API.Controllers
             User user = new User();
             user.UpdateUserModel(userViewModel);
 
-            var identityResult = await userManager.CreateAsync(user, userViewModel.Password);
+            var identityResult = await _userManager.CreateAsync(user, userViewModel.Password);
             if (identityResult.Succeeded)
             {
                 return Ok();

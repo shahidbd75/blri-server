@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BLRI.DAL.Interfaces.Core;
 using BLRI.DAL.Interfaces.LookUp;
+using BLRI.Entity.Animals;
 using BLRI.ViewModel.LookUp;
 
 namespace BLRI.DAL.Repositories.Lookup
@@ -42,6 +44,36 @@ namespace BLRI.DAL.Repositories.Lookup
                 Name = b.Name
             });
             return weightUnits;
+        }
+
+        public IEnumerable<DropdownViewModel<long>> GetAnimalCategoryDropdown()
+        {
+            var animalCategories = _context.AnimalCategory.Select(b => new DropdownViewModel<long>()
+            {
+                Id = b.Id,
+                Name = b.Name
+            });
+            return animalCategories;
+        }
+
+        public IEnumerable<DropdownViewModel<Int32>> GetGenderDropdown()
+        {
+            return (from Gender gender in Enum.GetValues(typeof(Gender))
+                select new DropdownViewModel<int>
+                {
+                    Id = (int)gender,
+                    Name = gender.ToString()
+                }).ToList();
+        }
+
+        public IEnumerable<DropdownViewModel<int>> GetGenotypeDropdown()
+        {
+            var genotypes = _context.Genotype.Select(b => new DropdownViewModel<int>()
+            {
+                Id = b.Id,
+                Name = b.Name
+            });
+            return genotypes;
         }
     }
 }

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190613155330_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190618150211_AddGenoType.cs" />
+    <Compile Remove="Migrations\20190618151210_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190620093824_IntialCreate.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />

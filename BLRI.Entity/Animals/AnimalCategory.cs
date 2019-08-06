@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace BLRI.Entity
+namespace BLRI.Entity.Animals
 {
     public class AnimalCategory
     {
@@ -11,5 +9,7 @@ namespace BLRI.Entity
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public ICollection<Animal> Animals { get; set; }
     }
 }

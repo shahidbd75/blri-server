@@ -38,17 +38,14 @@ namespace BLRI.API
                     .AllowAnyHeader();
             }));
 
-//            services.AddSwaggerGen(c =>
-//            {
-//                c.SwaggerDoc("v1", new Info { Title = "BLRI API", Version = "v1" });
-//            });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "BLRI API", Version = "v1" });
+            });
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConnection"),
                     mig => mig.MigrationsAssembly("BLRI.DAL")));
-
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IServiceUnitOfWork, ServiceUnitOfWork>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -66,11 +63,11 @@ namespace BLRI.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("Cors");
-//            app.UseSwagger();
-//            app.UseSwaggerUI(c =>
-//            {
-//                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BLRI API V1");
-//            });
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BLRI API V1");
+            });
             app.UseAuthentication();
             if (env.IsDevelopment())
             {

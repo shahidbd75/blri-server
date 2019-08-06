@@ -7,6 +7,6 @@ namespace BLRI.Entity.Units
 {
     public class GrowthUnit : BaseUnit
     {
-
+        public ICollection<Growth> Growths { get; set; }
     }
 }

@@ -3,13 +3,13 @@ using BLRI.Manager.Interfaces.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using BLRI.Common.Enum;
-using BLRI.ViewModel.LookUp;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using BLRI.ViewModel.Animals;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BLRI.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class AnimalCategoryController : BaseApiController
     {
         public AnimalCategoryController(IServiceUnitOfWork serviceUnitOfWork) : base(serviceUnitOfWork)
@@ -42,24 +42,41 @@ namespace BLRI.API.Controllers
             {
                 return Ok(ServiceUnitOfWork.AnimalCategoryManager.Add(animalCategoryViewModel));
             }
-            catch (Exception e)
+            catch
             {
-                BadRequest();
+                return StatusCode(500);
             }
-
-            return Ok();
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody]AnimalCategoryViewModel viewModel)
         {
+            try
+            {
+                var status = ServiceUnitOfWork.AnimalCategoryManager.Update(viewModel);
+                return status == ReasonCode.Updated ? Ok() : StatusCode(500);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
+
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                var status = ServiceUnitOfWork.AnimalCategoryManager.Delete(id);
+                return status == ReasonCode.Deleted ? Ok() : StatusCode(500);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }

@@ -1,8 +1,13 @@
 using System;
 using System.Threading.Tasks;
+using BLRI.DAL.Interfaces;
+using BLRI.DAL.Interfaces.Animals;
 using BLRI.DAL.Interfaces.Core;
 using BLRI.DAL.Interfaces.LookUp;
+using BLRI.DAL.Interfaces.Units;
+using BLRI.DAL.Repositories.Animals;
 using BLRI.DAL.Repositories.Lookup;
+using BLRI.DAL.Repositories.Units;
 
 
 namespace BLRI.DAL.Repositories.Core
@@ -13,16 +18,37 @@ namespace BLRI.DAL.Repositories.Core
 
         public IAnimalCategoryRepository AnimalCategoryRepository { get; }
         public IDropdownRepository DropdownRepository { get; }
+        public IAnimalRepository AnimalRepository { get; }
+        public IBiometricRepository BiometricRepository { get; }
+        public IBiometricUnitsRepository BiometricUnitsRepository { get; }
+        public IWeightUnitsRepository WeightUnitsRepository { get; }
+        public IGrowthUnitsRepository GrowthUnitsRepository { get; }
+        public ILiveWeightRepository LiveWeightRepository { get; set; }
+        public IBreedingRepository BreedingRepository { get; set; }
+        public IMilkYieldRepository MilkYieldRepository { get; set; }
+        public IHealthRepository HealthRepository { get; set; }
+        public ISemenRepository SemenRepository { get; set; }
+        public IGrowthRepository GrowthRepository { get; set; }
+        public IGenotypeRepository GenotypeRepository { get; set; }
 
-        //        public IChatFileRepository ChatFileRepository { get; }
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
             DropdownRepository = new DropdownRepository(_dbContext);
 
             AnimalCategoryRepository = new AnimalCategoryRepository(_dbContext);
-//            ApkRepository = new ApkRepository(_dbContext);
-//            ChatFileRepository = new ChatFileRepository(_dbContext);
+            AnimalRepository = new AnimalRepository(_dbContext);
+            BiometricRepository = new BiometricRepository(_dbContext);
+            BiometricUnitsRepository = new BiometricUnitsRepository(_dbContext);
+            GrowthUnitsRepository = new GrowthUnitsRepository(_dbContext);
+            WeightUnitsRepository = new WeightUnitsRepository(_dbContext);
+            LiveWeightRepository =new LiveWeightRepository(_dbContext);
+            BreedingRepository= new BreedingRepository(_dbContext);
+            MilkYieldRepository = new MilkYieldRepository(_dbContext);
+            HealthRepository = new HealthRepository(_dbContext);
+            SemenRepository = new SemenRepository(_dbContext);
+            GrowthRepository = new GrowthRepository(_dbContext);
+            GenotypeRepository = new GenotypeRepository(_dbContext);
         }
 
         public int Complete()

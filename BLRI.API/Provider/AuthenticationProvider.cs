@@ -15,51 +15,31 @@ namespace BLRI.API.Provider
     {
         public static void AddAuthenticationProvider(this IServiceCollection services)
         {
-            services.ConfigureApplicationCookie(config =>
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
             {
-                config.Events = new CookieAuthenticationEvents
+                options.SaveToken = true;
+                options.ClaimsIssuer = ApplicationConfiguration.TokenIssuer;
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    OnRedirectToLogin = ctx => {
-                        if (ctx.Request.Path.StartsWithSegments("/api"))
-                        {
-                            ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        }
-                        else
-                        {
-                            ctx.Response.Redirect(ctx.RedirectUri);
-                        }
-                        return Task.FromResult(0);
-                    }
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = ApplicationConfiguration.TokenIssuer,
+                    ValidAudience = ApplicationConfiguration.TokenIAudience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ApplicationConfiguration.JwtSecurityKey))
                 };
             });
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.SaveToken = true;
-                    options.ClaimsIssuer = ApplicationConfiguration.TokenIssuer;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-//                        ValidateLifetime = false,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = ApplicationConfiguration.TokenIssuer,
-                        ValidAudience = ApplicationConfiguration.TokenIAudience,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ApplicationConfiguration.JwtSecurityKey))
-                    };
-                });
-            // configure identity options
-            var identityBuilder = services.AddIdentityCore<User>(o =>
+            services.AddIdentityCore<User>(o =>
             {
                 o.Password.RequireDigit = false;
                 o.Password.RequireLowercase = false;
                 o.Password.RequireUppercase = false;
                 o.Password.RequireNonAlphanumeric = false;
                 o.Password.RequiredLength = 6;
-            });
-            identityBuilder = new IdentityBuilder(identityBuilder.UserType, typeof(IdentityRole), identityBuilder.Services);
-            identityBuilder.AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
         }
     }
 }

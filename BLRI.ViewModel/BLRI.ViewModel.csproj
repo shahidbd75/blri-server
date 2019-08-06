@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Units\" />
+    <ProjectReference Include="..\BLRI.Entity\BLRI.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="as\" />
   </ItemGroup>
 
 </Project>

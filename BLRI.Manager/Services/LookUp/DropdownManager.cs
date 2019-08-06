@@ -28,5 +28,20 @@ namespace BLRI.Manager.Services.LookUp
         {
             return UnitOfWork.DropdownRepository.GetWeightUnitsDropdown().ToList();
         }
+
+        public List<DropdownViewModel<long>> GetAnimalCategoriesDropdown()
+        {
+            return UnitOfWork.DropdownRepository.GetAnimalCategoryDropdown().ToList();
+        }
+
+        public List<DropdownViewModel<Int32>> GetGenderDropdown()
+        {
+            return UnitOfWork.DropdownRepository.GetGenderDropdown().ToList();
+        }
+
+        public List<DropdownViewModel<int>> GetGenotypeDropdown()
+        {
+            return UnitOfWork.DropdownRepository.GetGenotypeDropdown().ToList();
+        }
     }
 }

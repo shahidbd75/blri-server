@@ -12,7 +12,7 @@ namespace BLRI.DAL.SeedData
                 FirstName = "Administrator",
                 LastName = "User",
                 UserName = "Admin",
-                PasswordHash = Guid.NewGuid().ToString(),
+                PasswordHash = Guid.NewGuid().ToString()
             };
     }
 }

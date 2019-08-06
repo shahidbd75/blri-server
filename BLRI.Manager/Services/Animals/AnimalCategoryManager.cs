@@ -1,13 +1,13 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using BLRI.Common.Enum;
 using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
-using BLRI.Manager.Interfaces.LookUp;
+using BLRI.Entity.Animals;
+using BLRI.Manager.Interfaces.Animals;
 using BLRI.Manager.Services.Core;
-using BLRI.ViewModel.LookUp;
-using System.Collections.Generic;
+using BLRI.ViewModel.Animals;
 
-namespace BLRI.Manager.Services.LookUp
+namespace BLRI.Manager.Services.Animals
 {
     public class AnimalCategoryManager: BaseService, IAnimalCategoryManager
     {
@@ -58,10 +58,9 @@ namespace BLRI.Manager.Services.LookUp
                 return ReasonCode.NotFound;
             }
 
-            UnitOfWork.AnimalCategoryRepository.Update(new AnimalCategory()
-            {
-                Name = viewModel.Name
-            });
+            animalCategory.Name = viewModel.Name;
+
+            UnitOfWork.AnimalCategoryRepository.Update(animalCategory);
 
             return UnitOfWork.Complete() >0? ReasonCode.Updated: ReasonCode.OperationFailed;
         }

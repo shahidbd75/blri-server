@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using BLRI.DAL.Interfaces.Animals;
 using BLRI.DAL.Interfaces.LookUp;
+using BLRI.DAL.Interfaces.Units;
 
 namespace BLRI.DAL.Interfaces.Core
 {
@@ -11,6 +13,17 @@ namespace BLRI.DAL.Interfaces.Core
 
         IAnimalCategoryRepository AnimalCategoryRepository { get; }
         IDropdownRepository DropdownRepository { get; }
-//        IChatFileRepository ChatFileRepository { get; }
+        IAnimalRepository AnimalRepository { get; }
+        IBiometricRepository BiometricRepository{ get; }
+        IBiometricUnitsRepository BiometricUnitsRepository { get; }
+        IWeightUnitsRepository WeightUnitsRepository { get; }
+        IGrowthUnitsRepository GrowthUnitsRepository { get; }
+        ILiveWeightRepository LiveWeightRepository { get; set; }
+        IBreedingRepository BreedingRepository { get; set; }
+        IMilkYieldRepository MilkYieldRepository { get; set; }
+        IHealthRepository HealthRepository { get; set; }
+        ISemenRepository SemenRepository { get; set; }
+        IGrowthRepository GrowthRepository { get; set; }
+        IGenotypeRepository GenotypeRepository { get; set; }
     }
 }
