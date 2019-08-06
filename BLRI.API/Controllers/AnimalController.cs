@@ -178,7 +178,7 @@ namespace BLRI.API.Controllers
                 return StatusCode(500);
             }
 
-            return Ok(idNew);
+            return Ok(new {autoId = idNew});
         }
     }
 }
