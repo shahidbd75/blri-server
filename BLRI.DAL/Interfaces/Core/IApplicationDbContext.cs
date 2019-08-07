@@ -1,5 +1,4 @@
-﻿
-using BLRI.Entity;
+﻿using BLRI.Entity;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Units;
 using Microsoft.EntityFrameworkCore;
@@ -17,11 +16,9 @@ namespace BLRI.DAL.Interfaces.Core
         DbSet<Animal> Animal { get; set; }
         DbSet<LiveWeight> LiveWeight { get; set; }
         DbSet<Biometric> Biometric { get; set; }
-        DbSet<Growth> Growth { get; set; }
         DbSet<Breeding> Breeding { get; set; }
         DbSet<Health> Health { get; set; }
         DbSet<Semen> Semen { get; set; }
         DbSet<MilkYield> MilkYield { get; set; }
-        DbSet<Parentage> Parentage { get; set; }
     }
 }

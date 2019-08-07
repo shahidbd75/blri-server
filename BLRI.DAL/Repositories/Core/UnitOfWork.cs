@@ -28,7 +28,6 @@ namespace BLRI.DAL.Repositories.Core
         public IMilkYieldRepository MilkYieldRepository { get; set; }
         public IHealthRepository HealthRepository { get; set; }
         public ISemenRepository SemenRepository { get; set; }
-        public IGrowthRepository GrowthRepository { get; set; }
         public IGenotypeRepository GenotypeRepository { get; set; }
 
         public UnitOfWork(ApplicationDbContext dbContext)
@@ -47,7 +46,6 @@ namespace BLRI.DAL.Repositories.Core
             MilkYieldRepository = new MilkYieldRepository(_dbContext);
             HealthRepository = new HealthRepository(_dbContext);
             SemenRepository = new SemenRepository(_dbContext);
-            GrowthRepository = new GrowthRepository(_dbContext);
             GenotypeRepository = new GenotypeRepository(_dbContext);
         }
 

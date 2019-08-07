@@ -37,11 +37,9 @@ namespace BLRI.Entity.Animals
 
         public ICollection<Biometric> Biometrics { get; set; }
         public ICollection<LiveWeight> LiveWeights { get; set; }
-        public ICollection<Growth> Growths { get; set; }
         public ICollection<Health> Healths { get; set; }
         public ICollection<Semen> Semens { get; set; }
         public ICollection<Breeding> Breedings { get; set; }
-        public ICollection<Parentage> Parentages { get; set; }
         public ICollection<MilkYield> MilkYields { get; set; }
         #endregion
 

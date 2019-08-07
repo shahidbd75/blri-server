@@ -23,7 +23,6 @@ namespace BLRI.DAL.Interfaces.Core
         IMilkYieldRepository MilkYieldRepository { get; set; }
         IHealthRepository HealthRepository { get; set; }
         ISemenRepository SemenRepository { get; set; }
-        IGrowthRepository GrowthRepository { get; set; }
         IGenotypeRepository GenotypeRepository { get; set; }
     }
 }

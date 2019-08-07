@@ -20,12 +20,10 @@ namespace BLRI.DAL.Repositories.Core
         public DbSet<Animal> Animal { get; set; }
         public DbSet<LiveWeight> LiveWeight { get; set; }
         public DbSet<Biometric> Biometric { get; set; }
-        public DbSet<Growth> Growth { get; set; }
         public DbSet<Breeding> Breeding { get; set; }
         public DbSet<Health> Health { get; set; }
         public DbSet<Semen> Semen { get; set; }
         public DbSet<MilkYield> MilkYield { get; set; }
-        public DbSet<Parentage> Parentage { get; set; }
 
         public ApplicationDbContext()
         {
@@ -51,7 +49,6 @@ namespace BLRI.DAL.Repositories.Core
             modelBuilder.ApplyConfiguration(new MilkYieldConfiguration());
             modelBuilder.ApplyConfiguration(new SemenConfiguration());
             modelBuilder.ApplyConfiguration(new LiveWeightConfiguration());
-            modelBuilder.ApplyConfiguration(new GrowthConfiguration());
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
         }
