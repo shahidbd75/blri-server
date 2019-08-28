@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BLRI.Entity.Base;
+using BLRI.Entity.Task;
 
 namespace BLRI.Entity.Animals
 {
@@ -40,6 +41,7 @@ namespace BLRI.Entity.Animals
         public ICollection<Health> Healths { get; set; }
         public ICollection<Semen> Semens { get; set; }
         public ICollection<Breeding> Breedings { get; set; }
+        public ICollection<BreedingService> BreedingServices { get; set; }
         public ICollection<MilkYield> MilkYields { get; set; }
         #endregion
 

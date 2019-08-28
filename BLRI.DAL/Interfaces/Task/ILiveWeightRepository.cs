@@ -1,12 +1,10 @@
 ﻿using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
+using BLRI.Entity.Task;
+using BLRI.ViewModel.Live_Weight;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using BLRI.ViewModel.Biometric;
-using BLRI.ViewModel.Live_Weight;
 
-namespace BLRI.DAL.Interfaces
+namespace BLRI.DAL.Interfaces.Task
 {
     public interface ILiveWeightRepository: IRepository<LiveWeight>
     {

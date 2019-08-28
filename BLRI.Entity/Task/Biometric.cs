@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Base;
 using BLRI.Entity.Units;
 
-namespace BLRI.Entity
+namespace BLRI.Entity.Task
 {
     public class Biometric : BaseEntity
     {

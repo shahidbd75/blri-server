@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
+using BLRI.Entity.Auth;
 
 namespace BLRI.Entity.Base
 {
@@ -14,6 +15,24 @@ namespace BLRI.Entity.Base
 
         [Required]
         public DateTime LastUpdateDate { get; private set; }
+
+        [Required]
+        public string CreatedByUserId { get; private set; }
+
+        [Required]
+        public string UpdatedByUserId { get; set; }
+
+        [ForeignKey("CreatedByUserId")]
+        public User CreatedByUser { get; set; }
+
+        [ForeignKey("UpdatedByUserId")]
+        public User UpdatedByUser { get; set; }
+
+
+        public void SetCreateUserId()
+        {
+            CreatedByUserId = UpdatedByUserId;
+        }
 
         public void SetDate()
         {

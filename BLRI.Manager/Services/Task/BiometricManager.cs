@@ -8,6 +8,7 @@ using BLRI.Manager.Services.Core;
 using BLRI.ViewModel.Biometric;
 using System;
 using System.Collections.Generic;
+using BLRI.Entity.Task;
 
 namespace BLRI.Manager.Services.Task
 {

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Base;
 
-namespace BLRI.Entity
+namespace BLRI.Entity.Task
 {
     public class Semen: BaseEntity
     {

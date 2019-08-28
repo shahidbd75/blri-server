@@ -4,6 +4,7 @@ using BLRI.DAL.Interfaces.Core;
 using BLRI.Entity;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Auth;
+using BLRI.Entity.Task;
 using BLRI.Entity.Units;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ namespace BLRI.DAL.Repositories.Core
         public DbSet<Health> Health { get; set; }
         public DbSet<Semen> Semen { get; set; }
         public DbSet<MilkYield> MilkYield { get; set; }
+        public DbSet<BreedingService> BreedingServices { get; set; }
+        public DbSet<BreedingServiceDetail> BreedingServiceDetails { get; set; }
 
         public ApplicationDbContext()
         {
@@ -49,6 +52,8 @@ namespace BLRI.DAL.Repositories.Core
             modelBuilder.ApplyConfiguration(new MilkYieldConfiguration());
             modelBuilder.ApplyConfiguration(new SemenConfiguration());
             modelBuilder.ApplyConfiguration(new LiveWeightConfiguration());
+            modelBuilder.ApplyConfiguration(new BreedingServiceConfiguration());
+            modelBuilder.ApplyConfiguration(new BreedingServiceDetailConfiguration());
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
         }

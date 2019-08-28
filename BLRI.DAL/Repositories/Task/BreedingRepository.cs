@@ -1,12 +1,12 @@
-﻿using BLRI.DAL.Interfaces;
-using BLRI.DAL.Repositories.Core;
-using BLRI.Entity;
-using BLRI.ViewModel.Breeding;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BLRI.DAL.Interfaces.Task;
+using BLRI.DAL.Repositories.Core;
+using BLRI.Entity.Task;
+using BLRI.ViewModel.Breeding;
 
-namespace BLRI.DAL.Repositories
+namespace BLRI.DAL.Repositories.Task
 {
     public class BreedingRepository : Repository<Breeding>, IBreedingRepository
     {

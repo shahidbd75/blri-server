@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Transactions;
-using BLRI.DAL.Interfaces;
+using BLRI.DAL.Interfaces.Task;
 using BLRI.DAL.Repositories.Core;
-using BLRI.Entity;
-using BLRI.ViewModel.Biometric;
+using BLRI.Entity.Task;
 using BLRI.ViewModel.Live_Weight;
 
-namespace BLRI.DAL.Repositories
+namespace BLRI.DAL.Repositories.Task
 {
     public class LiveWeightRepository : Repository<LiveWeight>, ILiveWeightRepository
     {

@@ -1,11 +1,10 @@
 ﻿using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
+using BLRI.Entity.Task;
+using BLRI.ViewModel.Health;
 using System;
 using System.Collections.Generic;
-using BLRI.ViewModel.Health;
 
-
-namespace BLRI.DAL.Interfaces
+namespace BLRI.DAL.Interfaces.Task
 {
     public interface IHealthRepository : IRepository<Health>
     {

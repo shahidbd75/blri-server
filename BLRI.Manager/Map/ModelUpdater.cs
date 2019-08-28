@@ -2,6 +2,7 @@
 using BLRI.Entity;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Auth;
+using BLRI.Entity.Task;
 using BLRI.ViewModel.Animals;
 using BLRI.ViewModel.Auth;
 using BLRI.ViewModel.Biometric;

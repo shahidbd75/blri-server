@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BLRI.Entity.Base;
+using BLRI.Entity.Task;
 
 namespace BLRI.Entity.Units
 {

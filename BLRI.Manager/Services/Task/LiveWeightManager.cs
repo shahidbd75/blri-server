@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BLRI.Common.Enum;
 using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
+using BLRI.Entity.Task;
 using BLRI.Manager.Interfaces.Task;
 using BLRI.Manager.Map;
 using BLRI.Manager.Services.Core;

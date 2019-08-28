@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BLRI.Entity;
 using BLRI.Entity.Animals;
+using BLRI.Entity.Task;
 using BLRI.Entity.Units;
 using BLRI.ViewModel.Animals;
 using BLRI.ViewModel.Biometric;

@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using BLRI.DAL.Interfaces.Animals;
 using BLRI.DAL.Interfaces.LookUp;
+using BLRI.DAL.Interfaces.Task;
 using BLRI.DAL.Interfaces.Units;
 
 namespace BLRI.DAL.Interfaces.Core

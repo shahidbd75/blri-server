@@ -1,11 +1,10 @@
-﻿using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using BLRI.DAL.Interfaces.Core;
+using BLRI.Entity.Task;
 using BLRI.ViewModel.Biometric;
 
-namespace BLRI.DAL.Interfaces
+namespace BLRI.DAL.Interfaces.Task
 {
     public interface IBiometricRepository: IRepository<Biometric>
     {

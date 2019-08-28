@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using BLRI.DAL.Interfaces;
+using BLRI.DAL.Interfaces.Task;
 using BLRI.DAL.Repositories.Core;
-using BLRI.Entity;
+using BLRI.Entity.Task;
 using BLRI.ViewModel.Biometric;
 
-namespace BLRI.DAL.Repositories
+namespace BLRI.DAL.Repositories.Task
 {
     public class BiometricRepository : Repository<Biometric>, IBiometricRepository
     {

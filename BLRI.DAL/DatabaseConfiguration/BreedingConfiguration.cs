@@ -1,5 +1,6 @@
 ﻿using BLRI.Entity;
 using BLRI.Entity.Animals;
+using BLRI.Entity.Task;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
