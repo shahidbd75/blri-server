@@ -47,6 +47,8 @@ namespace BLRI.Manager.Services.Task
         {
             var milkYield = Mapper.Map<MilkYield>(viewModel);
             milkYield.Id = Guid.NewGuid();
+            milkYield.UpdatedByUserId = viewModel.UpdatedByUserId;
+            milkYield.SetCreateUserId();
             milkYield.SetLastUpdateDate();
             milkYield.SetCreateDate();
             UnitOfWork.MilkYieldRepository.Add(milkYield);
@@ -56,14 +58,16 @@ namespace BLRI.Manager.Services.Task
 
         public ReasonCode Update(MilkYieldViewModel viewModel)
         {
-            var milkYiels = UnitOfWork.MilkYieldRepository.Find(viewModel.Id);
-            if (milkYiels == null)
+            var milkYields = UnitOfWork.MilkYieldRepository.Find(viewModel.Id);
+            if (milkYields == null)
             {
                 return ReasonCode.NotFound;
             }
             //milkYiels.UpdateBiometric(viewModel);
-            milkYiels.SetLastUpdateDate();
-            UnitOfWork.MilkYieldRepository.Update(milkYiels);
+            milkYields.UpdatedByUserId = viewModel.UpdatedByUserId;
+            milkYields.SetCreateUserId();
+            milkYields.SetLastUpdateDate();
+            UnitOfWork.MilkYieldRepository.Update(milkYields);
 
             return UnitOfWork.Complete() > 0 ? ReasonCode.Updated : ReasonCode.OperationFailed;
         }

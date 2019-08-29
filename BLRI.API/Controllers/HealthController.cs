@@ -55,6 +55,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                healthViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.HealthManager.Add(healthViewModel);
                 return StatusCode((int)reasonCode);
             }

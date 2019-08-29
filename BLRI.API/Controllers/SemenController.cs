@@ -56,6 +56,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                semenViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.SemenManager.Add(semenViewModel);
                 return StatusCode((int)reasonCode);
             }
@@ -76,6 +77,7 @@ namespace BLRI.API.Controllers
 
             if (ServiceUnitOfWork.AnimalManager.Get(id) != null)
             {
+                semenViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.SemenManager.Update(semenViewModel);
                 return StatusCode((int) reasonCode);
             }

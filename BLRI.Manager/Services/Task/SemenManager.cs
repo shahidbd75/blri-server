@@ -47,6 +47,9 @@ namespace BLRI.Manager.Services.Task
         {
             var semen = Mapper.Map<Semen>(viewModel);
             semen.Id = Guid.NewGuid();
+            semen.Id = Guid.NewGuid();
+            semen.UpdatedByUserId = viewModel.UpdatedByUserId;
+            semen.SetCreateUserId();
             semen.SetLastUpdateDate();
             semen.SetCreateDate();
             UnitOfWork.SemenRepository.Add(semen);
@@ -61,7 +64,9 @@ namespace BLRI.Manager.Services.Task
             {
                 return ReasonCode.NotFound;
             }
-           // semen.UpdateBiometric(viewModel);
+            // semen.UpdateBiometric(viewModel);
+            semen.UpdatedByUserId = viewModel.UpdatedByUserId;
+            semen.SetCreateUserId();
             semen.SetLastUpdateDate();
             UnitOfWork.SemenRepository.Update(semen);
 

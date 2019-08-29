@@ -11,7 +11,7 @@ namespace BLRI.DAL.DatabaseConfiguration
             builder.Property(bs=>bs.BreedingServiceId).IsRequired();
             builder.Property(bs=>bs.EstrousDate).IsRequired();
             //builder.Property(bs=>bs.ServiceDate).IsRequired(false);
-            builder.Property(bs=>bs.ServiceConfirmed).IsRequired().HasDefaultValueSql("false");
+            builder.Property(bs=>bs.ServiceConfirmed).IsRequired().HasDefaultValueSql("0");
 
             builder.HasOne<BreedingService>(b => b.BreedingService)
                 .WithMany(bs=>bs.BreedingServiceDetails)

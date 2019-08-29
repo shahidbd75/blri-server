@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using BLRI.ViewModel.Core;
 
 namespace BLRI.ViewModel.Semen
 {
-    public class SemenViewModel
+    public class SemenViewModel: BaseViewModel<Guid>
     {
-        public Guid Id { get; set; }
         public double AgeAtFirstEjac { get; set; }
         public double SemenVolume { get; set; }
         public double SpermMotility { get; set; }

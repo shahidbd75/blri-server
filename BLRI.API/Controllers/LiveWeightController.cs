@@ -54,6 +54,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                liveWeightViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.LiveWeightManager.Add(liveWeightViewModel);
                 return StatusCode((int)reasonCode);
             }
@@ -74,6 +75,7 @@ namespace BLRI.API.Controllers
 
             if (ServiceUnitOfWork.LiveWeightManager.Get(id) != null)
             {
+                liveWeightViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.LiveWeightManager.Update(liveWeightViewModel);
                 return StatusCode((int) reasonCode);
             }

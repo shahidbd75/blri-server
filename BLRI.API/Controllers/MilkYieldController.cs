@@ -54,6 +54,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                milkYieldViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.MilkYieldManager.Add(milkYieldViewModel);
                 return StatusCode((int)reasonCode);
             }
@@ -74,6 +75,7 @@ namespace BLRI.API.Controllers
 
             if (ServiceUnitOfWork.AnimalManager.Get(id) != null)
             {
+                milkYieldViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.MilkYieldManager.Update(milkYieldViewModel);
                 return StatusCode((int) reasonCode);
             }

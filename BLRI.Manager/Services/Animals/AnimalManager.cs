@@ -53,6 +53,8 @@ namespace BLRI.Manager.Services.Animals
             animalObj.SetLastUpdateDate();
             animalObj.SetCreateDate();
             animalObj.Year = animalViewModel.BirthDate.Year;
+            animalObj.UpdatedByUserId = animalViewModel.UpdatedByUserId;
+            animalObj.SetCreateUserId();
             UnitOfWork.AnimalRepository.Add(animalObj);
 
             return UnitOfWork.Complete() > 0 ? ReasonCode.Created : ReasonCode.OperationFailed;
@@ -66,6 +68,8 @@ namespace BLRI.Manager.Services.Animals
                 return ReasonCode.NotFound;
             }
             animal.UpdateAnimal(viewModel);
+            animal.UpdatedByUserId = viewModel.UpdatedByUserId;
+            animal.SetCreateUserId();
             animal.SetLastUpdateDate();
             UnitOfWork.AnimalRepository.Update(animal);
 

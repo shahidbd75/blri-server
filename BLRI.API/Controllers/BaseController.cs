@@ -1,4 +1,6 @@
-﻿using BLRI.Manager.Interfaces.Core;
+﻿using System.Linq;
+using System.Security.Claims;
+using BLRI.Manager.Interfaces.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BLRI.API.Controllers
@@ -7,9 +9,14 @@ namespace BLRI.API.Controllers
     {
         protected readonly IServiceUnitOfWork ServiceUnitOfWork;
 
-        public BaseApiController(IServiceUnitOfWork serviceUnitOfWork)
+        protected BaseApiController(IServiceUnitOfWork serviceUnitOfWork)
         {
             ServiceUnitOfWork = serviceUnitOfWork;
+        }
+        protected string GetUserId()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            return identity?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         }
     }
 }

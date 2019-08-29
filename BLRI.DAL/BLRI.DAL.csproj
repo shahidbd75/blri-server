@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Interfaces\IGrowthRepository.cs" />
-    <Compile Remove="Migrations\20190613155330_InitialCreate.cs" />
-    <Compile Remove="Migrations\20190618150211_AddGenoType.cs" />
-    <Compile Remove="Migrations\20190618151210_InitialCreate.cs" />
-    <Compile Remove="Migrations\20190620093824_IntialCreate.cs" />
+    <Compile Remove="Migrations\20190829044120_InitialCreate.cs" />
     <Compile Remove="Repositories\GrowthRepository.cs" />
   </ItemGroup>
 

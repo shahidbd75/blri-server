@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BLRI.API.Provider;
 using BLRI.Entity.Auth;
@@ -39,6 +40,9 @@ namespace BLRI.API.Controllers
             var userResult = await _userManager.CheckPasswordAsync(user, loginViewModel.Password);
             if (userResult)
             {
+                ClaimsIdentity claims = new ClaimsIdentity("token");
+                claims.AddClaim(new Claim(ClaimTypes.NameIdentifier,user.Id));
+                claims.AddClaim(new Claim(ClaimTypes.GivenName,user.UserName));
                 return Ok(new { token = _tokenProvider.GenerateToken(user)});
             }
 

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using BLRI.Common.Enum;
 using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
 using BLRI.Manager.Interfaces.Task;
 using BLRI.Manager.Map;
 using BLRI.Manager.Services.Core;
@@ -51,6 +50,8 @@ namespace BLRI.Manager.Services.Task
             biometric.Id = Guid.NewGuid();
             biometric.SetLastUpdateDate();
             biometric.SetCreateDate();
+            biometric.UpdatedByUserId = viewModel.UpdatedByUserId;
+            biometric.SetCreateUserId();
             biometric.BiometricUnit = UnitOfWork.BiometricUnitsRepository.Find(viewModel.BiometricUnitId);
             biometric.Animal = UnitOfWork.AnimalRepository.Find(viewModel.AnimalId);
             UnitOfWork.BiometricRepository.Add(biometric);
@@ -66,6 +67,8 @@ namespace BLRI.Manager.Services.Task
                 return ReasonCode.NotFound;
             }
             biometric.UpdateBiometric(viewModel);
+            biometric.UpdatedByUserId = viewModel.UpdatedByUserId;
+            biometric.SetCreateUserId();
             biometric.SetLastUpdateDate();
             UnitOfWork.BiometricRepository.Update(biometric);
 

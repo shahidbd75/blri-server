@@ -1,10 +1,10 @@
 ﻿using System;
+using BLRI.ViewModel.Core;
 
 namespace BLRI.ViewModel.Milk_Yield
 {
-    public class MilkYieldViewModel
+    public class MilkYieldViewModel: BaseViewModel<Guid>
     {
-        public Guid Id { get; set; }
         public double LactationLength { get; set; }
         public double LactationMilkYield { get; set; }
         public double DailyMilkYield { get; set; }

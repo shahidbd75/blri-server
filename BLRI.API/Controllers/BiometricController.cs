@@ -54,6 +54,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                biometricViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.BiometricManager.Add(biometricViewModel);
                 return StatusCode((int)reasonCode);
             }
@@ -74,6 +75,7 @@ namespace BLRI.API.Controllers
 
             if (ServiceUnitOfWork.AnimalManager.Get(id) != null)
             {
+                biometricViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.BiometricManager.Update(biometricViewModel);
                 return StatusCode((int) reasonCode);
             }

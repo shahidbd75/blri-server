@@ -54,6 +54,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                growthViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.GrowthManager.Add(growthViewModel);
                 return StatusCode((int)reasonCode);
             }
@@ -74,6 +75,7 @@ namespace BLRI.API.Controllers
 
             if (ServiceUnitOfWork.AnimalManager.Get(id) != null)
             {
+                growthViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.GrowthManager.Update(growthViewModel);
                 return StatusCode((int) reasonCode);
             }

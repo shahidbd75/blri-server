@@ -20,19 +20,6 @@ namespace BLRI.DAL.Extensions
 
 
             // Add Security Admin User
-
-            User applicationUser = new User
-            {
-                UserName = "admin",
-                Email = "admin@blri.com",
-                NormalizedEmail = "admin@blri.com".ToUpper(),
-                NormalizedUserName = "admin".ToUpper(),
-                PhoneNumber = "01700000000"
-            };
-            PasswordHasher<User> password = new PasswordHasher<User>();
-            applicationUser.PasswordHash = password.HashPassword(applicationUser, "admin123");
-
-            modelBuilder.Entity<User>().HasData(applicationUser);
         }
     }
 }

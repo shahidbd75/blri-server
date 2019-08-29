@@ -5,9 +5,8 @@ using BLRI.ViewModel.Core;
 
 namespace BLRI.ViewModel.Biometric
 {
-    public class BiometricViewModel
+    public class BiometricViewModel: BaseViewModel<Guid>
     {
-        public Guid Id { get; set; }
         public int  AnimalCategoryId { get; set; }
         public Guid AnimalId { get; set; }
         public string AnimalNewId { get; set; }
@@ -37,8 +36,8 @@ namespace BLRI.ViewModel.Biometric
         public double UdderLength { get; set; }
         public double UdderBreadth { get; set; }
         public double UdderCircumference { get; set; }
-        public double TeatLength { get; set; }
-        public double TeatBreadth { get; set; }
-        public double TeatCircumference { get; set; }
+        public double? TeatLength { get; set; }
+        public double? TeatBreadth { get; set; }
+        public double? TeatCircumference { get; set; }
     }
 }

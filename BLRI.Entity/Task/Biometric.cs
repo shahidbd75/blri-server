@@ -33,9 +33,9 @@ namespace BLRI.Entity.Task
         public double UdderLength { get; set; }
         public double UdderBreadth { get; set; }
         public double UdderCircumference { get; set; }
-        public double TeatLength { get; set; }
-        public double TeatBreadth { get; set; }
-        public double TeatCircumference { get; set; }
+        public double? TeatLength { get; set; }
+        public double? TeatBreadth { get; set; }
+        public double? TeatCircumference { get; set; }
 
 
         public Animal Animal { get; set; }

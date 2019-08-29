@@ -1,15 +1,12 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using BLRI.API.Provider;
 using BLRI.DAL.Interfaces.Core;
 using BLRI.DAL.Repositories.Core;
-using BLRI.Entity.Auth;
 using BLRI.Manager.Interfaces.Core;
 using BLRI.Manager.Map;
 using BLRI.Manager.Services.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace BLRI.API.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class BreedingController : BaseApiController
     {
         public BreedingController(IServiceUnitOfWork serviceUnitOfWork) : base(serviceUnitOfWork)
@@ -54,6 +54,7 @@ namespace BLRI.API.Controllers
             }
             try
             {
+                breedingViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.BreedingManager.Add(breedingViewModel);
                 return StatusCode((int)reasonCode);
             }
@@ -74,6 +75,7 @@ namespace BLRI.API.Controllers
 
             if (ServiceUnitOfWork.AnimalManager.Get(id) != null)
             {
+                breedingViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.BreedingManager.Update(breedingViewModel);
                 return StatusCode((int) reasonCode);
             }

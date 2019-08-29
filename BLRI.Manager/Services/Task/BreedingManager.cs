@@ -49,6 +49,8 @@ namespace BLRI.Manager.Services.Task
         {
             var breeding = Mapper.Map<Breeding>(viewModel);
             breeding.Id = Guid.NewGuid();
+            breeding.UpdatedByUserId = viewModel.UpdatedByUserId;
+            breeding.SetCreateUserId();
             breeding.SetLastUpdateDate();
             breeding.SetCreateDate();
             UnitOfWork.BreedingRepository.Add(breeding);
@@ -64,6 +66,8 @@ namespace BLRI.Manager.Services.Task
                 return ReasonCode.NotFound;
             }
             breeding.UpdateBreeding(viewModel);
+            breeding.UpdatedByUserId = viewModel.UpdatedByUserId;
+            breeding.SetCreateUserId();
             breeding.SetLastUpdateDate();
             UnitOfWork.BreedingRepository.Update(breeding);
 

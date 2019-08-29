@@ -47,6 +47,8 @@ namespace BLRI.Manager.Services.Task
         {
             var health = Mapper.Map<Health>(viewModel);
             health.Id = Guid.NewGuid();
+            health.UpdatedByUserId = viewModel.UpdatedByUserId;
+            health.SetCreateUserId();
             health.SetLastUpdateDate();
             health.SetCreateDate();
             UnitOfWork.HealthRepository.Add(health);
@@ -61,7 +63,9 @@ namespace BLRI.Manager.Services.Task
             {
                 return ReasonCode.NotFound;
             }
-           // health.UpdateHealth(viewModel);
+            // health.UpdateHealth(viewModel);
+            health.UpdatedByUserId = viewModel.UpdatedByUserId;
+            health.SetCreateUserId();
             health.SetLastUpdateDate();
             UnitOfWork.HealthRepository.Update(health);
 

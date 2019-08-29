@@ -48,6 +48,8 @@ namespace BLRI.Manager.Services.Task
         {
             var liveWeight = Mapper.Map<LiveWeight>(viewModel);
             liveWeight.Id = Guid.NewGuid();
+            liveWeight.UpdatedByUserId = viewModel.UpdatedByUserId;
+            liveWeight.SetCreateUserId();
             liveWeight.SetLastUpdateDate();
             liveWeight.SetCreateDate();
             liveWeight.WeightUnit = UnitOfWork.WeightUnitsRepository.Find(liveWeight.WeightUnitId);
@@ -64,6 +66,8 @@ namespace BLRI.Manager.Services.Task
                 return ReasonCode.NotFound;
             }
             liveWeight.UpdateLiveWeight(viewModel);
+            liveWeight.UpdatedByUserId = viewModel.UpdatedByUserId;
+            liveWeight.SetCreateUserId();
             liveWeight.SetLastUpdateDate();
             UnitOfWork.LiveWeightRepository.Update(liveWeight);
 
