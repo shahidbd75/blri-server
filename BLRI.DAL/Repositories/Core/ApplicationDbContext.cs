@@ -1,7 +1,7 @@
-﻿using BLRI.DAL.DatabaseConfiguration;
+﻿using System.Linq;
+using BLRI.DAL.DatabaseConfiguration;
 using BLRI.DAL.Extensions;
 using BLRI.DAL.Interfaces.Core;
-using BLRI.Entity;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Auth;
 using BLRI.Entity.Task;
@@ -42,7 +42,7 @@ namespace BLRI.DAL.Repositories.Core
             return new ApplicationDbContext();
         }
 
- 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AnimalConfiguration());
@@ -50,10 +50,16 @@ namespace BLRI.DAL.Repositories.Core
             modelBuilder.ApplyConfiguration(new HealthConfiguration());
             modelBuilder.ApplyConfiguration(new BreedingConfiguration());
             modelBuilder.ApplyConfiguration(new MilkYieldConfiguration());
+            modelBuilder.ApplyConfiguration(new MilkYieldDetailConfiguration());
             modelBuilder.ApplyConfiguration(new SemenConfiguration());
             modelBuilder.ApplyConfiguration(new LiveWeightConfiguration());
             modelBuilder.ApplyConfiguration(new BreedingServiceConfiguration());
             modelBuilder.ApplyConfiguration(new BreedingServiceDetailConfiguration());
+
+//            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+//            {
+//                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+//            }
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
         }

@@ -17,9 +17,7 @@ namespace BLRI.DAL.Extensions
             modelBuilder.Entity<Genotype>().HasData(BasicSeed.Genotypes);
             modelBuilder.Entity<AnimalCategory>().HasData(BasicSeed.AnimalCategories);
             modelBuilder.Entity<IdentityRole>().HasData(UserSeed.IdentityRole);
-
-
-            // Add Security Admin User
+            modelBuilder.Entity<User>().HasData(UserSeed.User);
         }
     }
 }

@@ -54,6 +54,8 @@ namespace BLRI.DAL.SeedData
                 FirstName = "Administrator",
                 LastName = "User",
                 UserName = "admin",
+                NormalizedUserName = "admin".ToUpper(),
+                NormalizedEmail = "admin_blri@gmail.com".ToUpper(),
                 PasswordHash = new PasswordHasher<User>().HashPassword(null,"admin123"),
                 SecurityStamp = string.Empty
             };

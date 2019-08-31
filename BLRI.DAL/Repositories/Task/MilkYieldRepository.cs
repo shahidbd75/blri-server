@@ -22,11 +22,11 @@ namespace BLRI.DAL.Repositories.Task
                 {
                     Id = my.Id,
                     AnimalId = my.AnimalId,
-                    DailyMilkYield = my.DailyMilkYield,
-                    DryPeriod = my.DailyMilkYield,
-                    Persistency = my.Persistency,
-                    LactationLength = my.LactationLength,
-                    LactationMilkYield = my.LactationMilkYield
+                    CalvingParity = my.CalvingParity,
+                    CalvingDate = my.CalvingDate,
+                    FirstMilkDate = my.FirstMilkDate,
+                    NextCalving = my.NextCalving,
+                    DryOff = my.DryOff
                 };
             return milkYield.ToList();
         }

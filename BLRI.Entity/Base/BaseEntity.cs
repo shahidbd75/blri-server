@@ -16,10 +16,8 @@ namespace BLRI.Entity.Base
         [Required]
         public DateTime LastUpdateDate { get; private set; }
 
-        [Required]
         public string CreatedByUserId { get; private set; }
 
-        [Required]
         public string UpdatedByUserId { get; set; }
 
         [ForeignKey("CreatedByUserId")]
