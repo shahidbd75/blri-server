@@ -2,6 +2,7 @@
 using BLRI.Manager.Interfaces.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using BLRI.Common.Enum;
 using BLRI.ViewModel.Biometric;
 using Microsoft.AspNetCore.Authorization;
 
@@ -54,9 +55,15 @@ namespace BLRI.API.Controllers
             }
             try
             {
+
                 biometricViewModel.UpdatedByUserId = GetUserId();
-                var reasonCode = ServiceUnitOfWork.BiometricManager.Add(biometricViewModel);
-                return StatusCode((int)reasonCode);
+                if (ServiceUnitOfWork.BiometricManager.GetBiometric(biometricViewModel.AnimalId,biometricViewModel.BiometricUnitId) == null)
+                {
+                    var reasonCode = ServiceUnitOfWork.BiometricManager.Add(biometricViewModel);
+                    return StatusCode((int)reasonCode);
+                }
+
+                return Ok((int) ReasonCode.AlreadyExist);
             }
             catch(Exception ex)
             {

@@ -9,5 +9,7 @@ namespace BLRI.Manager.Interfaces.Task
     {
         List<BiometricViewModel> GetBiometricByAnimalId(Guid animalId);
         BiometricViewModel GetBiometricById(Guid id);
+
+        BiometricViewModel GetBiometric(Guid animalId, long biometricUnitId);
     }
 }

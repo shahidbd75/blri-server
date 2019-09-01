@@ -10,5 +10,6 @@ namespace BLRI.DAL.Interfaces.Task
     {
         List<BiometricViewModel> GetBiometricByAnimalId(Guid animalId);
         BiometricViewModel GetBiometricId(Guid id);
+        Biometric GetBiometrics(Guid animalId, long biometricUnitId);
     }
 }

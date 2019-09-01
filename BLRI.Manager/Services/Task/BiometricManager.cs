@@ -8,6 +8,7 @@ using BLRI.ViewModel.Biometric;
 using System;
 using System.Collections.Generic;
 using BLRI.Entity.Task;
+using Mapper = AutoMapper.Mapper;
 
 namespace BLRI.Manager.Services.Task
 {
@@ -83,6 +84,13 @@ namespace BLRI.Manager.Services.Task
         public BiometricViewModel GetBiometricById(Guid id)
         {
             return UnitOfWork.BiometricRepository.GetBiometricId(id);
+        }
+
+        public BiometricViewModel GetBiometric(Guid animalId, long biometricUnitId)
+        {
+            var biometric = UnitOfWork.BiometricRepository.GetBiometrics(animalId, biometricUnitId);
+
+            return Mapper.Map<BiometricViewModel>(biometric);
         }
     }
 }

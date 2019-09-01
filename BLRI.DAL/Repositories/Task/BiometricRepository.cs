@@ -102,5 +102,13 @@ namespace BLRI.DAL.Repositories.Task
                 };
             return biometric.FirstOrDefault();
         }
+
+        public Biometric GetBiometrics(Guid animalId, long biometricUnitId)
+        {
+            var biometric = from b in Context.Biometric
+                where b.BiometricUnitId == biometricUnitId & b.AnimalId == animalId
+                select b;
+            return biometric.FirstOrDefault();
+        }
     }
 }
