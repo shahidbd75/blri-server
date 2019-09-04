@@ -25,6 +25,7 @@ namespace BLRI.DAL.Repositories.Core
         public DbSet<Health> Health { get; set; }
         public DbSet<Semen> Semen { get; set; }
         public DbSet<MilkYield> MilkYield { get; set; }
+        public DbSet<MilkYieldDetail> MilkYieldDetail { get; set; }
         public DbSet<BreedingService> BreedingServices { get; set; }
         public DbSet<BreedingServiceDetail> BreedingServiceDetails { get; set; }
 

@@ -48,9 +48,8 @@ namespace BLRI.API
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ITokenProvider, TokenProvider>();
 
-
             Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
-            services.AddAutoMapper();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddAuthenticationProvider();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

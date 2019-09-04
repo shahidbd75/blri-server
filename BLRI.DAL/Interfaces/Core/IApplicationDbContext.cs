@@ -21,6 +21,7 @@ namespace BLRI.DAL.Interfaces.Core
         DbSet<Health> Health { get; set; }
         DbSet<Semen> Semen { get; set; }
         DbSet<MilkYield> MilkYield { get; set; }
+        DbSet<MilkYieldDetail> MilkYieldDetail { get; set; }
 
         DbSet<BreedingService> BreedingServices { get; set; }
         DbSet<BreedingServiceDetail> BreedingServiceDetails { get; set; }
