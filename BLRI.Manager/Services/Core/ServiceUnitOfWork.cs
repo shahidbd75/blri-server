@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using BLRI.DAL.Interfaces.Core;
-using BLRI.Manager.Interfaces;
 using BLRI.Manager.Interfaces.Animals;
 using BLRI.Manager.Interfaces.Core;
 using BLRI.Manager.Interfaces.LookUp;
@@ -34,6 +33,7 @@ namespace BLRI.Manager.Services.Core
             HealthManager = new HealthManager(unitOfWork);
             MilkYieldManager =new MilkYieldManager(unitOfWork);
             GenotypeManager =new GenotypeManager(unitOfWork);
+            BreedingServiceManager = new BreedingServiceManager(unitOfWork);
         }
         public int Complete()
         {
@@ -59,5 +59,6 @@ namespace BLRI.Manager.Services.Core
         public IMilkYieldManager MilkYieldManager { get; set; }
         public ISemenManager SemenManager { get; set; }
         public IGenotypeManager GenotypeManager { get; set; }
+        public IBreedingServiceManager BreedingServiceManager { get; set; }
     }
 }

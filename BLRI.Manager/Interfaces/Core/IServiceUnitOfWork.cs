@@ -25,5 +25,6 @@ namespace BLRI.Manager.Interfaces.Core
         IMilkYieldManager MilkYieldManager { get; set; }
         ISemenManager SemenManager { get; set; }
         IGenotypeManager GenotypeManager { get; set; }
+        IBreedingServiceManager BreedingServiceManager { get; set; }
     }
 }

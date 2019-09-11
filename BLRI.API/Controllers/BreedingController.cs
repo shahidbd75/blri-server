@@ -73,7 +73,7 @@ namespace BLRI.API.Controllers
                 return BadRequest("Please provide Animal Id");
             }
 
-            if (ServiceUnitOfWork.AnimalManager.Get(id) != null)
+            if (ServiceUnitOfWork.BreedingManager.Get(id) != null)
             {
                 breedingViewModel.UpdatedByUserId = GetUserId();
                 var reasonCode = ServiceUnitOfWork.BreedingManager.Update(breedingViewModel);
