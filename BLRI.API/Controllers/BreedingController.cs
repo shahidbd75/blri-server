@@ -3,6 +3,7 @@ using BLRI.ViewModel.Breeding;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using BLRI.Common.Enum;
 using Microsoft.AspNetCore.Authorization;
 
 namespace BLRI.API.Controllers
@@ -115,9 +116,9 @@ namespace BLRI.API.Controllers
                 }
 
             }
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500);
+                return ErrorResponseResult(ReasonCode.InternalServerError,e.Message);
             }
             return NoContent();
         }

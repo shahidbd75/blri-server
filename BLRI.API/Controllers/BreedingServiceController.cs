@@ -104,7 +104,7 @@ namespace BLRI.API.Controllers
             try
             {
                 var reasonCode = ServiceUnitOfWork.BreedingServiceManager.Delete(id);
-                return Ok((int)reasonCode);
+                return ResponseResult(reasonCode,"");
             }
             catch (Exception)
             {
