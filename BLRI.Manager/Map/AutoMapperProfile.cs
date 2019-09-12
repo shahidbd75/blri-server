@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BLRI.Entity;
 using BLRI.Entity.Animals;
 using BLRI.Entity.Task;
 using BLRI.Entity.Units;
@@ -7,6 +6,7 @@ using BLRI.ViewModel.Animals;
 using BLRI.ViewModel.Biometric;
 using BLRI.ViewModel.Breeding;
 using BLRI.ViewModel.BreedingService;
+using BLRI.ViewModel.BreedingServiceDetail;
 using BLRI.ViewModel.Health;
 using BLRI.ViewModel.Live_Weight;
 using BLRI.ViewModel.Milk_Yield;
@@ -33,7 +33,7 @@ namespace BLRI.Manager.Map
             CreateMap<LiveWeight, LiveWeightViewModel>().ReverseMap();
             CreateMap<MilkYield, MilkYieldViewModel>().ReverseMap();
             CreateMap<BreedingService, BreedingServiceViewModel>().ReverseMap();
-
+            CreateMap<BreedingServiceDetail, BreedingServiceDetailViewModel>().ReverseMap();
             //CreateMap<>()
         }
     }

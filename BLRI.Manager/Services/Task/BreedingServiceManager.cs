@@ -19,11 +19,9 @@ namespace BLRI.Manager.Services.Task
 
         public BreedingServiceViewModel Get(object id)
         {
-            var breed = UnitOfWork.BreedingServiceRepository.Find(id);
+            var breedingService = UnitOfWork.BreedingServiceRepository.GetBreedingById(id);
 
-            var result = Mapper.Map<BreedingServiceViewModel>(breed);
-
-            return result;
+            return breedingService;
         }
 
         public ReasonCode Delete(object id)
@@ -71,7 +69,7 @@ namespace BLRI.Manager.Services.Task
             return UnitOfWork.Complete() > 0 ? ReasonCode.Updated : ReasonCode.OperationFailed;
         }
 
-        public List<BreedingServiceViewModel> GetBreedingServiceByAnimalId(Guid animalId)
+        public List<BreedingServiceListViewModel> GetBreedingServiceByAnimalId(Guid animalId)
         {
             return UnitOfWork.BreedingServiceRepository.GetBreedingServiceByAnimalId(animalId);
         }

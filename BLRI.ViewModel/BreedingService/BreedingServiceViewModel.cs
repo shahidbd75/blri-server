@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using BLRI.ViewModel.Core;
 
 namespace BLRI.ViewModel.BreedingService
@@ -12,5 +11,7 @@ namespace BLRI.ViewModel.BreedingService
         [Required]
         public int Parity { get; set; }
         public DateTime CalvingDate { get; set; }
+
+        public string AnimalIdNew { get; set; }
     }
 }

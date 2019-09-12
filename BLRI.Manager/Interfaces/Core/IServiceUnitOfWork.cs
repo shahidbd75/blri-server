@@ -26,5 +26,6 @@ namespace BLRI.Manager.Interfaces.Core
         ISemenManager SemenManager { get; set; }
         IGenotypeManager GenotypeManager { get; set; }
         IBreedingServiceManager BreedingServiceManager { get; set; }
+        IBreedingServiceDetailManager BreedingServiceDetailManager { get; set; }
     }
 }

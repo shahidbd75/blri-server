@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using BLRI.DAL.Interfaces;
 using BLRI.DAL.Interfaces.Animals;
 using BLRI.DAL.Interfaces.Core;
 using BLRI.DAL.Interfaces.LookUp;
@@ -33,6 +32,7 @@ namespace BLRI.DAL.Repositories.Core
         public ISemenRepository SemenRepository { get; set; }
         public IGenotypeRepository GenotypeRepository { get; set; }
         public IBreedingServiceRepository BreedingServiceRepository { get; set; }
+        public IBreedingServiceDetailRepository BreedingServiceDetailRepository { get; set; }
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
@@ -53,6 +53,7 @@ namespace BLRI.DAL.Repositories.Core
             GenotypeRepository = new GenotypeRepository(_dbContext);
             MilkYieldDetailRepository = new MilkYieldDetailRepository(_dbContext);
             BreedingServiceRepository = new BreedingServiceRepository(_dbContext);
+            BreedingServiceDetailRepository =new BreedingServiceDetailRepository(_dbContext);
         }
 
         public int Complete()

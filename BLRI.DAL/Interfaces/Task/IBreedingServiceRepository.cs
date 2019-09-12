@@ -9,10 +9,13 @@ namespace BLRI.DAL.Interfaces.Task
 {
     public interface IBreedingServiceRepository: IRepository<BreedingService>
     {
-        List<BreedingServiceViewModel> GetBreedingServiceByAnimalId(Guid animalId);
+        List<BreedingServiceListViewModel> GetBreedingServiceByAnimalId(Guid animalId);
 
         bool IsExistBreedingServiceByParity(Guid animalId, int parity);
 
         bool IsExistBreedingServiceByParityOther(Guid id, Guid animalId, int parity);
+
+        BreedingServiceViewModel GetBreedingById(object id);
+
     }
 }

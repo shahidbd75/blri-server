@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using BLRI.Common.Enum;
-using BLRI.ViewModel.BreedingService;
+using BLRI.ViewModel.BreedingServiceDetail;
 using Microsoft.AspNetCore.Authorization;
 
 namespace BLRI.API.Controllers
 {
     [Route("api/[controller]")]
-    public class BreedingServiceController : BaseApiController
+    public class BreedingServiceDetailController : BaseApiController
     {
-        public BreedingServiceController(IServiceUnitOfWork serviceUnitOfWork) : base(serviceUnitOfWork)
+        public BreedingServiceDetailController(IServiceUnitOfWork serviceUnitOfWork) : base(serviceUnitOfWork)
         {
 
         }
@@ -20,15 +20,15 @@ namespace BLRI.API.Controllers
         [HttpGet("getAll")]
         public IActionResult GetAll()
         {
-            var list =  ServiceUnitOfWork.BreedingServiceManager.GetAll().ToList();
+            var list =  ServiceUnitOfWork.BreedingServiceDetailManager.GetAll().ToList();
             return ResponseResult(ReasonCode.Ok,"", list);
         }
 
         // GET: api/<controller>
         [HttpGet("getAllBy")]
-        public IActionResult GetAllBy(BreedingServiceViewModel breedingViewModel)
+        public IActionResult GetAllBy(BreedingServiceDetailViewModel breedingViewModel)
         {
-            var list = ServiceUnitOfWork.BreedingServiceManager.GetAll();
+            var list = ServiceUnitOfWork.BreedingServiceDetailManager.GetAll();
             return ResponseResult(ReasonCode.Ok,"",list);
         }
 
@@ -36,7 +36,7 @@ namespace BLRI.API.Controllers
         [HttpGet("getById/{id}")]
         public IActionResult Get(Guid id)
         {
-            var breedingService = ServiceUnitOfWork.BreedingServiceManager.Get(id);
+            var breedingService = ServiceUnitOfWork.BreedingServiceDetailManager.Get(id);
             if (breedingService == null)
             {
                 return ResponseResult(ReasonCode.NoContent,"Data not found");
@@ -46,7 +46,7 @@ namespace BLRI.API.Controllers
 
         // POST api/<controller>
         [HttpPost("add")]
-        public IActionResult Post([FromBody]BreedingServiceViewModel breedingViewModel)
+        public IActionResult Post([FromBody]BreedingServiceDetailViewModel breedingViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -54,12 +54,8 @@ namespace BLRI.API.Controllers
             }
             try
             {
-                if (ServiceUnitOfWork.BreedingServiceManager.IsExistBreedingServiceByParity(breedingViewModel.AnimalId,breedingViewModel.Parity))
-                {
-                    return ErrorResponseResult(ReasonCode.AlreadyExist, "Already exist data for this parity");
-                }
                 breedingViewModel.UpdatedByUserId = GetUserId();
-                var reasonCode = ServiceUnitOfWork.BreedingServiceManager.Add(breedingViewModel);
+                var reasonCode = ServiceUnitOfWork.BreedingServiceDetailManager.Add(breedingViewModel);
                 return ResponseResult(reasonCode, "Created Successfully");
 
             }
@@ -71,25 +67,21 @@ namespace BLRI.API.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("update/{id}")]
-        public IActionResult Put(Guid id, [FromBody]BreedingServiceViewModel breedingViewModel)
+        public IActionResult Put(Guid id, [FromBody]BreedingServiceDetailViewModel breedingViewModel)
         {
             if (id == Guid.Empty)
             {
                 return BadRequest("Please provide Animal Id");
             }
 
-            if (ServiceUnitOfWork.BreedingServiceManager.Get(id) != null)
+            if (ServiceUnitOfWork.BreedingServiceDetailManager.Get(id) != null)
             {
                 breedingViewModel.UpdatedByUserId = GetUserId();
-                if (ServiceUnitOfWork.BreedingServiceManager.IsExistBreedingServiceByParityOther(id,breedingViewModel.AnimalId,breedingViewModel.Parity))
-                {
-                    return ErrorResponseResult(ReasonCode.AlreadyExist, "Same Parity already exist");
-                }
-                var reasonCode = ServiceUnitOfWork.BreedingServiceManager.Update(breedingViewModel);
+                var reasonCode = ServiceUnitOfWork.BreedingServiceDetailManager.Update(breedingViewModel);
                 return ResponseResult(reasonCode, "Updated Successfully");
             }
 
-            return NoContent();
+            return ErrorResponseResult(ReasonCode.NoContent,"No content for update");
         }
 
         // DELETE api/<controller>/5
@@ -103,7 +95,7 @@ namespace BLRI.API.Controllers
 
             try
             {
-                var reasonCode = ServiceUnitOfWork.BreedingServiceManager.Delete(id);
+                var reasonCode = ServiceUnitOfWork.BreedingServiceDetailManager.Delete(id);
                 return ResponseResult(reasonCode,"");
             }
             catch (Exception e)
@@ -112,14 +104,14 @@ namespace BLRI.API.Controllers
             }
         }
 
-        [HttpGet("getBreedingServiceListBy/{animalId}")]
-        public IActionResult GetBreedingServiceByAnimalId(Guid animalId)
+        [HttpGet("getBreedServiceListByServiceId/{serviceId}")]
+        public IActionResult GetBreedingServiceDetailByServiceId(Guid serviceId)
         {
             try
             {
-                if (animalId != Guid.Empty)
+                if (serviceId != Guid.Empty)
                 {
-                    var list = ServiceUnitOfWork.BreedingServiceManager.GetBreedingServiceByAnimalId(animalId).ToList();
+                    var list = ServiceUnitOfWork.BreedingServiceDetailManager.GetBreedingServiceDetailById(serviceId).ToList();
                     return ResponseResult(ReasonCode.Ok,"",list);
                 }
             }

@@ -27,5 +27,6 @@ namespace BLRI.DAL.Interfaces.Core
         ISemenRepository SemenRepository { get; set; }
         IGenotypeRepository GenotypeRepository { get; set; }
         IBreedingServiceRepository BreedingServiceRepository { get; set; }
+        IBreedingServiceDetailRepository BreedingServiceDetailRepository { get; set; }
     }
 }

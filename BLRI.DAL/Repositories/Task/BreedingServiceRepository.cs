@@ -14,16 +14,20 @@ namespace BLRI.DAL.Repositories.Task
         {
         }
 
-        public List<BreedingServiceViewModel> GetBreedingServiceByAnimalId(Guid animalId)
+        public List<BreedingServiceListViewModel> GetBreedingServiceByAnimalId(Guid animalId)
         {
             var breedingService = from b in Context.BreedingServices
                 join a in Context.Animal on b.AnimalId equals a.Id
-                select new BreedingServiceViewModel
+                let serviceDetail = Context.BreedingServiceDetails.Where(sd => sd.BreedingServiceId == b.Id)
+                select new BreedingServiceListViewModel
                 {
                     Id = b.Id,
                     AnimalId = b.AnimalId,
                     CalvingDate = b.CalvingDate,
-                    Parity = b.Parity
+                    Parity = b.Parity,
+                    FrequencyOfService = serviceDetail.Count(),
+                    ServiceConfirmed = serviceDetail.Any(s=>s.ServiceConfirmed),
+                    AnimalIdNew = a.AIdNew
                 };
             return breedingService.ToList();
         }
@@ -36,6 +40,23 @@ namespace BLRI.DAL.Repositories.Task
         public bool IsExistBreedingServiceByParityOther(Guid id, Guid animalId, int parity)
         {
             return Context.BreedingServices.Any(bs => bs.AnimalId == animalId && bs.Parity == parity && bs.Id != id);
+        }
+
+        public BreedingServiceViewModel GetBreedingById(object id)
+        {
+            Guid serviceId = (Guid)id;
+            var breedingService = from b in Context.BreedingServices
+                join a in Context.Animal on b.AnimalId equals a.Id
+                where b.Id == serviceId
+                select new BreedingServiceViewModel
+                {
+                    Id = b.Id,
+                    AnimalId = b.AnimalId,
+                    CalvingDate = b.CalvingDate,
+                    Parity = b.Parity,
+                    AnimalIdNew = a.AIdNew
+                };
+            return breedingService.FirstOrDefault();
         }
     }
 }

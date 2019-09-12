@@ -34,6 +34,7 @@ namespace BLRI.Manager.Services.Core
             MilkYieldManager =new MilkYieldManager(unitOfWork);
             GenotypeManager =new GenotypeManager(unitOfWork);
             BreedingServiceManager = new BreedingServiceManager(unitOfWork);
+            BreedingServiceDetailManager =new BreedingServiceDetailManager(unitOfWork);
         }
         public int Complete()
         {
@@ -60,5 +61,6 @@ namespace BLRI.Manager.Services.Core
         public ISemenManager SemenManager { get; set; }
         public IGenotypeManager GenotypeManager { get; set; }
         public IBreedingServiceManager BreedingServiceManager { get; set; }
+        public IBreedingServiceDetailManager BreedingServiceDetailManager { get; set; }
     }
 }
